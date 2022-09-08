@@ -1,10 +1,16 @@
 <template>
   <div class="post">
     <div>
+      <div>{{ post.id }}</div>
       <div><strong>Name:</strong> {{ post.title }}</div>
       <div><strong>Description:</strong> {{ post.body }}</div>
     </div>
     <div class="post__btns">
+      <my-button
+          @click="$router.push(`/posts/${post.id}`)"
+      >
+        Open
+      </my-button>
       <my-button
           @click="$emit('remove', post)"
       >
@@ -19,7 +25,7 @@ export default {
   props: {
     post: {
       type: Object,
-      required: true
+      required: true,
     }
   }
 }
@@ -33,5 +39,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.post__btns {
+  display: flex;
 }
 </style>
